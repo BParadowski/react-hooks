@@ -22,21 +22,20 @@ function FavoriteAnimal() {
       <input
         id="animal"
         value={animal}
-        onChange={event => setAnimal(event.target.value)}
+        onAnimalChange={event => setAnimal(event.target.value)}
       />
     </div>
   )
 }
 
 // 🐨 uncomment this
-// function Display({name, animal}) {
-//   return <div>{`Hey ${name}, your favorite animal is: ${animal}!`}</div>
-// }
+function Display({name, animal}) {
+  return (
+    <div>{`Hey ${name}, your favorite animal is: Dog because I said so!!`}</div>
+  )
+}
 
 // 💣 remove this component in favor of the new one
-function Display({name}) {
-  return <div>{`Hey ${name}, you are great!`}</div>
-}
 
 function App() {
   // 🐨 add a useState for the animal
