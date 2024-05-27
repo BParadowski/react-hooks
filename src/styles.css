@@ -85,6 +85,11 @@ https://micku7zu.github.io/vanilla-tilt.js/index.html
   min-width: 190px;
 }
 
+.grayed-out {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 /* For exercise 6, we're handling errors with an error boundary */
 body[class*='6'] :not(.render-container) > iframe,
 body[class*='6'] > iframe {
