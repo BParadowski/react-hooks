@@ -4,10 +4,17 @@
 import * as React from 'react'
 import {useLocalStorageState} from '../utils'
 
-function Board({restart, renderSquare}) {
+function Board({squares, selectSquare}) {
+  function renderSquare(i) {
+    return (
+      <button className="square" onClick={() => selectSquare(i)}>
+        {squares[i]}
+      </button>
+    )
+  }
+
   return (
     <div>
-      {/* 🐨 put the status in the div below */}
       <div className="board-row">
         {renderSquare(0)}
         {renderSquare(1)}
@@ -23,9 +30,6 @@ function Board({restart, renderSquare}) {
         {renderSquare(7)}
         {renderSquare(8)}
       </div>
-      <button className="restart" onClick={restart}>
-        restart
-      </button>
     </div>
   )
 }
@@ -70,14 +74,6 @@ function Game() {
     setHistory([Array(9).fill(null)])
   }
 
-  function renderSquare(i) {
-    return (
-      <button className="square" onClick={() => selectSquare(i)}>
-        {squares[i]}
-      </button>
-    )
-  }
-
   const moves = history.map((board, i) => {
     return (
       <li key={i}>
@@ -95,7 +91,10 @@ function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board restart={restart} renderSquare={renderSquare} />
+        <Board selectSquare={selectSquare} squares={squares} />
+        <button className="restart" onClick={restart}>
+          restart
+        </button>
       </div>
       <div>
         <p>{status}</p>
